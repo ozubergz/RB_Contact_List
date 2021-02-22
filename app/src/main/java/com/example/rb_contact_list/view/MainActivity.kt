@@ -10,15 +10,11 @@ import com.example.rb_contact_list.viewmodel.ViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    val TAG = "MainActivity"
+//    val TAG = "MainActivity"
     private val viewModel by viewModels<ViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        viewModel.allUsers.observe(this, Observer {
-            Log.d(TAG, "onCreate: $it")
-        })
     }
 }
