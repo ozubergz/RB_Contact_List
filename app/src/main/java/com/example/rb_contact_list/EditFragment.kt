@@ -38,7 +38,13 @@ class EditFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Log.d(TAG, "onViewCreated: ${args.user}")
+        val user = args.user
+
+        // Non Nullable
+        user?.let {
+            binding.etFirstName.setText(user.first_name)
+            binding.etLastName.setText(user.last_name)
+        }
 
         binding.btnSave.setOnClickListener {
             val firstName = binding.etFirstName.text.toString()
