@@ -1,5 +1,6 @@
 package com.example.rb_contact_list
 
+import android.nfc.Tag
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -9,13 +10,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.example.rb_contact_list.databinding.FragmentEditBinding
 import com.example.rb_contact_list.modal.User
 import com.example.rb_contact_list.viewmodel.ViewModel
+import com.google.android.material.tabs.TabLayout
 
 class EditFragment : Fragment() {
 
+    val TAG = "EditFragment"
+
     private lateinit var binding: FragmentEditBinding
+    private val args by navArgs<EditFragmentArgs>()
     private val viewModel by activityViewModels<ViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +37,9 @@ class EditFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        Log.d(TAG, "onViewCreated: ${args.user}")
+
         binding.btnSave.setOnClickListener {
             val firstName = binding.etFirstName.text.toString()
             val lastName = binding.etLastName.text.toString()

@@ -50,6 +50,7 @@ class HomeFragment : Fragment(), ClickListener {
         }
     }
 
+    // click listener to detail screen
     override fun userClicked(user: User) {
         val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(user)
         findNavController().navigate(action)

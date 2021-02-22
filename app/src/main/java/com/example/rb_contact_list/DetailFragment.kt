@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.rb_contact_list.databinding.FragmentDetailBinding
 
@@ -28,7 +29,8 @@ class DetailFragment : Fragment() {
         binding.tvFullName.text = "${user.first_name} ${user.last_name}"
 
         binding.btnEdit.setOnClickListener {
-            
+            val action = DetailFragmentDirections.actionDetailFragmentToEditFragment(user)
+            findNavController().navigate(action)
         }
     }
 }
