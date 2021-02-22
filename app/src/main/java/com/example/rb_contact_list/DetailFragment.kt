@@ -26,5 +26,9 @@ class DetailFragment : Fragment() {
         val user = args.user
 
         binding.tvFullName.text = "${user.first_name} ${user.last_name}"
+
+        binding.btnEdit.setOnClickListener {
+            
+        }
     }
 }
