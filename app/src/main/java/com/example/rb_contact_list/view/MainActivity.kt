@@ -11,7 +11,6 @@ import com.example.rb_contact_list.viewmodel.ViewModel
 class MainActivity : AppCompatActivity() {
 
 //    val TAG = "MainActivity"
-    private val viewModel by viewModels<ViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

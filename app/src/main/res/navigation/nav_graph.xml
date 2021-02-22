@@ -13,11 +13,23 @@
         <action
             android:id="@+id/action_homeFragment_to_editFragment"
             app:destination="@id/editFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
     <fragment
         android:id="@+id/editFragment"
         android:name="com.example.rb_contact_list.EditFragment"
         android:label="fragment_edit"
         tools:layout="@layout/fragment_edit" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.rb_contact_list.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="user"
+            app:argType="com.example.rb_contact_list.modal.User" />
+    </fragment>
 
 </navigation>
