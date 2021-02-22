@@ -2,6 +2,7 @@ package com.example.rb_contact_list
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -35,12 +36,13 @@ class EditFragment : Fragment() {
             val lastName = binding.etLastName.text.toString()
             val user = User(firstName, lastName)
 
-            if(inputCheck(firstName, lastName))
+            if(inputCheck(firstName, lastName)) {
                 viewModel.addUser(user)
+            }
         }
     }
 
     private fun inputCheck(firstName: String, lastName: String) : Boolean {
-        return !(firstName.isEmpty() && lastName.isEmpty())
+        return (firstName.isNotEmpty() && lastName.isNotEmpty())
     }
 }
