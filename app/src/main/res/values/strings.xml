@@ -7,5 +7,7 @@
     <string name="last_name">Last Name</string>
     <string name="save">Save</string>
     <string name="edit">edit</string>
-    <string name="adress">Adress</string>
+    <string name="address">Address</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
 </resources>

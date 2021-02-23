@@ -1,20 +1,16 @@
 package com.example.rb_contact_list
 
-import android.nfc.Tag
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.rb_contact_list.databinding.FragmentEditBinding
 import com.example.rb_contact_list.modal.User
 import com.example.rb_contact_list.viewmodel.ViewModel
-import com.google.android.material.tabs.TabLayout
 
 class EditFragment : Fragment() {
 
@@ -37,6 +33,21 @@ class EditFragment : Fragment() {
         val user = args.user
         val edit = args.edit
 
+        val emails : ArrayList<String> = arrayListOf()
+        val phoneNumbers : ArrayList<String> = arrayListOf()
+
+        binding.btnAddEmail.setOnClickListener {
+            val email = binding.etEmail.text.toString()
+            emails.add(email)
+            binding.etEmail.setText("")
+        }
+
+        binding.btnAddPhone.setOnClickListener {
+            val phone = binding.etPhone.text.toString()
+            phoneNumbers.add(phone)
+            binding.etPhone.setText("")
+        }
+
         // Non Nullable
         user?.let {
             binding.etFirstName.setText(user.first_name)
@@ -49,7 +60,7 @@ class EditFragment : Fragment() {
             val lastName = binding.etLastName.text.toString()
             val address = binding.etAddress.text.toString()
 
-            val user = User(firstName, lastName, address).apply {
+            val user = User(firstName, lastName, address, emails, phoneNumbers).apply {
                 args.user?.id?.let { id = it }
             }
 
