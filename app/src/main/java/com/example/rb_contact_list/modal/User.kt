@@ -11,8 +11,8 @@ import kotlinx.parcelize.Parcelize
 data class User (
     val first_name : String,
     val last_name: String,
+    val address: String
 ) : Parcelable {
-
     @IgnoredOnParcel
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0

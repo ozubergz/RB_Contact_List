@@ -24,10 +24,6 @@ class EditFragment : Fragment() {
     private val args by navArgs<EditFragmentArgs>()
     private val viewModel by activityViewModels<ViewModel>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -45,15 +41,19 @@ class EditFragment : Fragment() {
         user?.let {
             binding.etFirstName.setText(user.first_name)
             binding.etLastName.setText(user.last_name)
+            binding.etAddress.setText(user.address)
         }
 
         binding.btnSave.setOnClickListener {
             val firstName = binding.etFirstName.text.toString()
             val lastName = binding.etLastName.text.toString()
-            val user = User(firstName, lastName).apply {
+            val address = binding.etAddress.text.toString()
+
+            val user = User(firstName, lastName, address).apply {
                 args.user?.id?.let { id = it }
             }
-            if (inputCheck(firstName, lastName)) {
+
+            if (inputCheck(firstName, lastName, address)) {
                 if (edit) {
                     viewModel.update(user)
                 } else {
@@ -63,7 +63,7 @@ class EditFragment : Fragment() {
         }
     }
 
-    private fun inputCheck(firstName: String, lastName: String): Boolean {
-        return (firstName.isNotEmpty() && lastName.isNotEmpty())
+    private fun inputCheck(firstName: String, lastName: String, address: String): Boolean {
+        return (firstName.isNotEmpty() && lastName.isNotEmpty() && address.isNotEmpty())
     }
 }

@@ -14,10 +14,19 @@
         app:layout_constraintTop_toTopOf="parent"
         android:text="@string/edit"/>
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_full_name"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/btn_edit"
         tools:text="John Doe"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_full_name"
+        tools:text="123rd Street"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

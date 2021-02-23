@@ -34,4 +34,12 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_save"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/adress"
+        app:layout_constraintTop_toBottomOf="@+id/et_last_name"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
