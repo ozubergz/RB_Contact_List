@@ -1,6 +1,7 @@
 package com.example.rb_contact_list.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
@@ -24,6 +25,12 @@ class ViewModel(application: Application) : AndroidViewModel(application) {
     fun addUser(user: User) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.addUser(user)
+        }
+    }
+
+    fun update(user: User) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.update(user)
         }
     }
 }

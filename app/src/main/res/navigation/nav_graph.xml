@@ -27,6 +27,9 @@
             app:argType="com.example.rb_contact_list.modal.User"
             app:nullable="true"
             android:defaultValue="@null" />
+        <argument
+            android:name="edit"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"

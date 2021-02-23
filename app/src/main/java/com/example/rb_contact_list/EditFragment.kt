@@ -29,8 +29,8 @@ class EditFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ) = FragmentEditBinding.inflate(inflater, container, false).also {
         binding = it
     }.root
@@ -39,6 +39,7 @@ class EditFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val user = args.user
+        val edit = args.edit
 
         // Non Nullable
         user?.let {
@@ -49,15 +50,20 @@ class EditFragment : Fragment() {
         binding.btnSave.setOnClickListener {
             val firstName = binding.etFirstName.text.toString()
             val lastName = binding.etLastName.text.toString()
-            val user = User(firstName, lastName)
-
-            if(inputCheck(firstName, lastName)) {
-                viewModel.addUser(user)
+            val user = User(firstName, lastName).apply {
+                args.user?.id?.let { id = it }
+            }
+            if (inputCheck(firstName, lastName)) {
+                if (edit) {
+                    viewModel.update(user)
+                } else {
+                    viewModel.addUser(user)
+                }
             }
         }
     }
 
-    private fun inputCheck(firstName: String, lastName: String) : Boolean {
+    private fun inputCheck(firstName: String, lastName: String): Boolean {
         return (firstName.isNotEmpty() && lastName.isNotEmpty())
     }
 }

@@ -10,8 +10,6 @@ import com.example.rb_contact_list.viewmodel.ViewModel
 
 class MainActivity : AppCompatActivity() {
 
-//    val TAG = "MainActivity"
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

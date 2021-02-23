@@ -28,7 +28,6 @@ class HomeFragment : Fragment(), ClickListener {
         binding = it
     }.root
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -42,10 +41,9 @@ class HomeFragment : Fragment(), ClickListener {
 
         /////////////////////////////////////////////////
 
-
         // click listener to add new user
         binding.addBtn.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToEditFragment()
+            val action = HomeFragmentDirections.actionHomeFragmentToEditFragment(null, false)
             findNavController().navigate(action)
         }
     }

@@ -29,7 +29,7 @@ class DetailFragment : Fragment() {
         binding.tvFullName.text = "${user.first_name} ${user.last_name}"
 
         binding.btnEdit.setOnClickListener {
-            val action = DetailFragmentDirections.actionDetailFragmentToEditFragment(user)
+            val action = DetailFragmentDirections.actionDetailFragmentToEditFragment(user, true)
             findNavController().navigate(action)
         }
     }
