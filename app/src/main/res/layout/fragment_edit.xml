@@ -80,7 +80,7 @@
         android:id="@+id/btn_add_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/btn_add_email"
+        app:layout_constraintTop_toBottomOf="@+id/rv_email_list"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="+"/>
 

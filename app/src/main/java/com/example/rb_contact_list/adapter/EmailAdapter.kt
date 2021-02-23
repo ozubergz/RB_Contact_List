@@ -8,7 +8,7 @@ import com.example.rb_contact_list.databinding.EmailLayoutBinding
 class EmailAdapter(private val emails: ArrayList<String>) : RecyclerView.Adapter<EmailAdapter.ViewHolder>() {
 
     class ViewHolder(private val binding: EmailLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(email: String) {
+        fun bind(email: String, position: Int) {
             binding.tvEmail.text = email
         }
     }
@@ -19,7 +19,7 @@ class EmailAdapter(private val emails: ArrayList<String>) : RecyclerView.Adapter
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(emails[position])
+        holder.bind(emails[position], position)
     }
 
     override fun getItemCount(): Int = emails.size

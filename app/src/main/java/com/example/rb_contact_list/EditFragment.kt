@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rb_contact_list.adapter.EmailAdapter
@@ -71,7 +72,6 @@ class EditFragment : Fragment() {
             binding.etAddress.setText(user.address)
         }
 
-
         binding.btnSave.setOnClickListener {
             val firstName = binding.etFirstName.text.toString()
             val lastName = binding.etLastName.text.toString()
@@ -87,6 +87,9 @@ class EditFragment : Fragment() {
                 } else {
                     viewModel.addUser(user)
                 }
+
+                val action = EditFragmentDirections.actionEditFragmentToHomeFragment()
+                findNavController().navigate(action)
             }
         }
     }
