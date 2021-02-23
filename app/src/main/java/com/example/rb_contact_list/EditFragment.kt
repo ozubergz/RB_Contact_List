@@ -8,6 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.rb_contact_list.adapter.EmailAdapter
+import com.example.rb_contact_list.adapter.PhoneAdapter
 import com.example.rb_contact_list.databinding.FragmentEditBinding
 import com.example.rb_contact_list.modal.User
 import com.example.rb_contact_list.viewmodel.ViewModel
@@ -33,18 +36,31 @@ class EditFragment : Fragment() {
         val user = args.user
         val edit = args.edit
 
-        val emails : ArrayList<String> = arrayListOf()
-        val phoneNumbers : ArrayList<String> = arrayListOf()
+        var emails : ArrayList<String> = arrayListOf()
+        var phoneNumbers : ArrayList<String> = arrayListOf()
+
+        if (user != null) {
+            emails = user.email
+            binding.rvEmailList.adapter = EmailAdapter(emails)
+            binding.rvEmailList.layoutManager = LinearLayoutManager(context)
+
+            phoneNumbers = user.phone
+            binding.rvPhoneList.adapter = PhoneAdapter(phoneNumbers)
+            binding.rvPhoneList.layoutManager = LinearLayoutManager(context)
+        }
 
         binding.btnAddEmail.setOnClickListener {
-            val email = binding.etEmail.text.toString()
-            emails.add(email)
+            val newEmail = binding.etEmail.text.toString()
+            emails.add(newEmail)
+            binding.rvEmailList.adapter?.notifyDataSetChanged()
             binding.etEmail.setText("")
         }
 
+
         binding.btnAddPhone.setOnClickListener {
-            val phone = binding.etPhone.text.toString()
-            phoneNumbers.add(phone)
+            val newPhone = binding.etPhone.text.toString()
+            phoneNumbers.add(newPhone)
+            binding.rvPhoneList.adapter?.notifyDataSetChanged()
             binding.etPhone.setText("")
         }
 
@@ -54,6 +70,7 @@ class EditFragment : Fragment() {
             binding.etLastName.setText(user.last_name)
             binding.etAddress.setText(user.address)
         }
+
 
         binding.btnSave.setOnClickListener {
             val firstName = binding.etFirstName.text.toString()
