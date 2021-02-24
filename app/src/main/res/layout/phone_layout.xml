@@ -10,7 +10,7 @@
         android:id="@+id/tv_phone_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black_800"
+        android:textColor="@color/white_50"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
         app:layout_constraintTop_toTopOf="parent"
