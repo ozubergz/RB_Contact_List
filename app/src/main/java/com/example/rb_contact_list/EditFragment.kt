@@ -52,17 +52,20 @@ class EditFragment : Fragment() {
 
         binding.btnAddEmail.setOnClickListener {
             val newEmail = binding.etEmail.text.toString()
-            emails.add(newEmail)
-            binding.rvEmailList.adapter?.notifyDataSetChanged()
-            binding.etEmail.setText("")
+            if (newEmail != "") {
+                emails.add(newEmail)
+                binding.rvEmailList.adapter?.notifyDataSetChanged()
+                binding.etEmail.setText("")
+            }
         }
-
 
         binding.btnAddPhone.setOnClickListener {
             val newPhone = binding.etPhone.text.toString()
-            phoneNumbers.add(newPhone)
-            binding.rvPhoneList.adapter?.notifyDataSetChanged()
-            binding.etPhone.setText("")
+            if (newPhone != "") {
+                phoneNumbers.add(newPhone)
+                binding.rvPhoneList.adapter?.notifyDataSetChanged()
+                binding.etPhone.setText("")
+            }
         }
 
         // Non Nullable

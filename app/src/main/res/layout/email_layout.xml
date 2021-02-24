@@ -10,9 +10,11 @@
         android:id="@+id/tv_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/black_800"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:textColor="@color/black_800"
-        tools:text="123@email.com"/>
+        tools:text="123@email.com"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
