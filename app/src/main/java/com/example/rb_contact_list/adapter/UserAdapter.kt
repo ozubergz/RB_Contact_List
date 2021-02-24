@@ -12,6 +12,11 @@ class UserAdapter(private val data: List<User>, private val listener: ClickListe
 
     class ViewHolder(private val binding: UserLayoutBinding, private val listener: ClickListener) : RecyclerView.ViewHolder(binding.root) {
         fun bind(user: User) {
+            val firstLetter = user.first_name[0].toUpperCase()
+            val lastLetter = user.last_name[0].toUpperCase()
+            val abbreviation = "$firstLetter$lastLetter"
+
+            binding.circleLogo.text = abbreviation
             binding.tvFullName.text = "${user.first_name} ${user.last_name}"
 
             binding.root.setOnClickListener {
