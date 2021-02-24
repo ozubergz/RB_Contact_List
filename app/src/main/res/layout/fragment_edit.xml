@@ -69,16 +69,6 @@
         app:layout_constraintBottom_toTopOf="@+id/rv_email_list"
         app:layout_constraintEnd_toEndOf="parent" />
 
-<!--    <com.google.android.material.button.MaterialButton-->
-<!--        android:id="@id/btn_add_email"-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="20dp"-->
-<!--        android:text="@string/add"-->
-<!--        app:cornerRadius="100dp"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/et_email"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/et_address"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"/>-->
-
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_phone"
         android:layout_width="0dp"
@@ -88,13 +78,15 @@
         app:layout_constraintTop_toBottomOf="@+id/rv_email_list"
         app:layout_constraintEnd_toStartOf="@+id/btn_add_email"/>
 
-    <com.google.android.material.button.MaterialButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_add_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add"
+        android:backgroundTint="@color/blue_gray"
+        android:src="@drawable/ic_baseline_add_24"
+        app:fabCustomSize="25dp"
         app:layout_constraintTop_toBottomOf="@+id/rv_email_list"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_phone_list"

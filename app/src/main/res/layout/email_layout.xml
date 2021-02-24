@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/black_800"
         tools:text="123@email.com"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
