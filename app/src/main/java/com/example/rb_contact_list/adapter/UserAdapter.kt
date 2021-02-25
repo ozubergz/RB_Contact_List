@@ -64,7 +64,12 @@ class UserAdapter(private var data: List<User>, private val listener: ClickListe
                 } else {
                     val resultList : MutableList<User> = mutableListOf()
                     for(user in data) {
-                        if(user.first_name.toLowerCase(Locale.ROOT).contains(charSearch.toLowerCase(Locale.ROOT))) {
+                        val firstName = user.first_name.toLowerCase(Locale.ROOT)
+                        val lastName = user.last_name.toLowerCase(Locale.ROOT)
+                        val fullName = "$firstName $lastName"
+                        val search = charSearch.toLowerCase(Locale.ROOT)
+
+                        if(fullName.contains(search)) {
                             resultList.add(user)
                         }
                     }
