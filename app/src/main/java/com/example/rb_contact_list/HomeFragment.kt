@@ -1,6 +1,8 @@
 package com.example.rb_contact_list
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,6 +17,9 @@ import com.example.rb_contact_list.adapter.UserAdapter
 import com.example.rb_contact_list.databinding.FragmentHomeBinding
 import com.example.rb_contact_list.modal.User
 import com.example.rb_contact_list.viewmodel.ViewModel
+import org.w3c.dom.Text
+import java.util.*
+import kotlin.math.log
 
 class HomeFragment : Fragment(), ClickListener {
 
@@ -31,10 +36,23 @@ class HomeFragment : Fragment(), ClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.etSearch.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+        })
+
+
         ///////////// Recycler View Adapter //////////////
 
-        viewModel.allUsers.observe(viewLifecycleOwner, Observer {
-            binding.rvUserList.adapter = UserAdapter(it, this)
+        viewModel.allUsers.observe(viewLifecycleOwner, Observer { users ->
+            binding.rvUserList.adapter = UserAdapter(users, this)
         })
 
         binding.rvUserList.layoutManager = LinearLayoutManager(context)
