@@ -1,16 +1,16 @@
 package com.example.rb_contact_list.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rb_contact_list.databinding.UserLayoutBinding
 import com.example.rb_contact_list.modal.User
 import java.util.*
-import kotlin.collections.ArrayList
 
-class UserAdapter(private var data: List<User>, private val listener: ClickListener) : RecyclerView.Adapter<UserAdapter.ViewHolder>() {
+class UserAdapter(private var data: List<User>, private val listener: ClickListener) : RecyclerView.Adapter<UserAdapter.ViewHolder>(), Filterable {
 
     var userFilteredList : List<User> = emptyList()
 
@@ -54,5 +54,33 @@ class UserAdapter(private var data: List<User>, private val listener: ClickListe
     }
 
     override fun getItemCount(): Int = userFilteredList.size
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val charSearch = constraint.toString()
+                userFilteredList = if(charSearch.isEmpty()) {
+                    data
+                } else {
+                    val resultList : MutableList<User> = mutableListOf()
+                    for(user in data) {
+                        if(user.first_name.toLowerCase(Locale.ROOT).contains(charSearch.toLowerCase(Locale.ROOT))) {
+                            resultList.add(user)
+                        }
+                    }
+                    resultList
+                }
+                val filterResults = FilterResults()
+                filterResults.values = userFilteredList
+                return filterResults
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                userFilteredList = results?.values as List<User>
+                notifyDataSetChanged()
+            }
+
+        }
+    }
 
 }

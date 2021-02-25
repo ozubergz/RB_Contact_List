@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -36,23 +37,23 @@ class HomeFragment : Fragment(), ClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.etSearch.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-
-            }
-        })
-
-
         ///////////// Recycler View Adapter //////////////
 
         viewModel.allUsers.observe(viewLifecycleOwner, Observer { users ->
-            binding.rvUserList.adapter = UserAdapter(users, this)
+            val mAdapter = UserAdapter(users, this)
+            binding.rvUserList.adapter = mAdapter
+
+            binding.etSearch.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    mAdapter.filter.filter(s)
+                }
+            })
         })
 
         binding.rvUserList.layoutManager = LinearLayoutManager(context)
