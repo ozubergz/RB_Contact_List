@@ -14,7 +14,7 @@ interface UserDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateUser(user: User)
 
-    @Query("SELECT * FROM user ORDER BY id ASC")
+    @Query("SELECT * FROM user ORDER BY first_name ASC")
     fun getAllUsers(): LiveData<List<User>>
 
 //    @Query("SELECT * from user WHERE id= :id LIMIT 1")
