@@ -4,18 +4,19 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.rb_contact_list.modal.User
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addUser(user: User): Long
+    fun addUser(user: User): Long
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateUser(user: User)
 
     @Query("SELECT * FROM user ORDER BY first_name ASC")
-    fun getAllUsers(): LiveData<List<User>>
+    fun getAllUsers(): Flow<List<User>>
 
 //    @Query("SELECT * from user WHERE id= :id LIMIT 1")
 //    fun findUserById(id: Int)

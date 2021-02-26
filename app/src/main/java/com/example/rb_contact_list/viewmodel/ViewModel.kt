@@ -4,6 +4,7 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.rb_contact_list.data.UserDB
 import com.example.rb_contact_list.data.UserRepository
@@ -13,14 +14,16 @@ import kotlinx.coroutines.launch
 
 class ViewModel(application: Application) : AndroidViewModel(application) {
 
-    val allUsers : LiveData<List<User>>
+
     private val repository: UserRepository
 
     init {
         val userDao = UserDB.getUserDB(application).userDao()
         repository = UserRepository(userDao)
-        allUsers = repository.allUsers
+//        allUsers = repository.allUsers
     }
+
+    val allUsers = repository.allUsers.asLiveData(viewModelScope.coroutineContext)
 
     fun addUser(user: User) {
         viewModelScope.launch(Dispatchers.IO) {
